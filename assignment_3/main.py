@@ -58,12 +58,22 @@ def canny_edge_detection(image, threshold_1, threshold_2):
     cv2.imwrite("canny_edges.png", canny_edges)
 
 
-def resize(image, scale_factor: int, up_or_down: str):
-    cv2.imwrite("resized.png", resized_image)
-    
+def resize(image_path, scale_factor: int, up_or_down: str):
+    rows, cols, _channels = map(int, image.shape)
+    if up_or_down == "up":
+        dst = cv2.pyrUp(image, dstsize=(2 * cols, 2 * rows))
+    elif up_or_down == "down":
+        dst = cv2.pyrDown(image, dstsize=(cols // 2, rows // 2))
+    else:
+        raise ValueError("up_or_down must be 'up' or 'down'")
+    cv2.imwrite("resized_"+up_or_down+".png", dst)
+    return 0
+
 
 # Read the original image
 image = cv2.imread('lambo.png') 
+resize(image, scale_factor=2, up_or_down="up")
+resize(image, scale_factor=2, up_or_down="down")
 sobel_edge_detection(image)
 canny_edge_detection(image, 50, 50)
 template_match("shapes-1.png","shapes_template.jpg")
