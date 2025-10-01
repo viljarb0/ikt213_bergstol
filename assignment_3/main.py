@@ -67,7 +67,6 @@ def resize(image_path, scale_factor: int, up_or_down: str):
     else:
         raise ValueError("up_or_down must be 'up' or 'down'")
     cv2.imwrite("resized_"+up_or_down+".png", dst)
-    return 0
 
 
 # Read the original image
