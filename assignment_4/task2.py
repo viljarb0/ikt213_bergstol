@@ -4,18 +4,16 @@ import numpy as np
 
 def align_images(image_to_align, reference_image, max_features, good_match_precent):
     """
-    Align `image_to_align` to `reference_image` using SIFT keypoints and FLANN matching.
-
-    Parameters
-    ----------
-    image_to_align : str
-        Path to the image that should be aligned.
-    reference_image : str
-        Path to the reference image (alignment target).
-    max_features : int
-        Maximum number of SIFT features to detect.
-    good_match_precent : float
-        Lowe's ratio test threshold (0-1) to keep good matches.
+    Align image_to_align to reference_image using SIFT keypoints and FLANN matching
+    Params:
+        image_to_align : str
+            Path to the image that should be aligned.
+        reference_image : str
+            Path to the reference image (alignment target).
+        max_features : int
+            Maximum number of SIFT features to detect.
+        good_match_precent : float
+            Lowe's ratio test threshold (0-1) to keep good matches.
     """
     img1_color = cv2.imread(image_to_align)
     img2_color = cv2.imread(reference_image)
