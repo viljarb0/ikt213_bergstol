@@ -15,6 +15,6 @@ def harris_corner_detection(filename):
 # Threshold for an optimal value, it may vary depending on the image.
     img[dst>0.01*dst.max()]=[0,0,255]
 
-    cv2.imwrite("corners_"+filename,img)
+    cv2.imwrite("harris.jpg", img)
 
 harris_corner_detection("reference_img.png")
